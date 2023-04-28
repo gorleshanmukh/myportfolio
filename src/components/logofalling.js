@@ -63,15 +63,31 @@ const LogoFalling = () => {
         const ground = Bodies.rectangle(0, window.innerHeight, 1300, 4);
         const leftWall = Bodies.rectangle(0, 360, 4, 740, boundaryOptions);
         // const rightWall = Bodies.rectangle(0, window.innerHeight-30, window.innerWidth*3, 3, boundaryOptions);
-        let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 300, 1, boundaryOptions1)
+        let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions1)
 
         // const box = Bodies.rectangle(400, 200, 80, 80);
         // const circle = Bodies.circle(200, 100, 40);
-
         World.add(engine.world, [trap]);
-
         Engine.run(engine);
         Render.run(render);
+        // Add collision event listener to the engine
+        Events.on(engine, 'collisionStart', (event) => {
+            const pairs = event.pairs;
+
+            // Iterate through the collision pairs
+            for (let i = 0; i < pairs.length; i++) {
+                const pair = pairs[i];
+                const bodyA = pair.bodyA;
+                const bodyB = pair.bodyB;
+
+                // Set restitution and friction properties of colliding bodies
+                bodyA.restitution = 0.7;
+                bodyB.restitution = 0.7;
+                bodyA.friction = 0.5;
+                bodyB.friction = 0.5;
+            }
+        });
+
         let mouse = Mouse.create(render.canvas),
             mouseConstraint = MouseConstraint.create(engine, {
                 mouse: mouse,
@@ -106,24 +122,25 @@ const LogoFalling = () => {
             random(1,10) * -100,
             // SIZE,
             // SIZE,
-            50,
-            50,
+            30,
+            30,
             {
                 angle: Math.random() * 360 * (Math.PI / 180),
-                duration: 1000,
+                collisionFilter: {
+                    category: 0x0001, // set a category that is different from other bodies
+                },
                 render: {
                     sprite: {
-                        stiffness: 1,
                         texture: getTexture(),
                         // xScale: SIZE / ORIGINAL_SIZE,
                         // yScale: SIZE / ORIGINAL_SIZE,
-                        xScale: 0.3, // set the x scale of the texture
-                        yScale: 0.3, // set the y scale of the texture
+                        xScale: 0.2, // set the x scale of the texture
+                        yScale: 0.2, // set the y scale of the texture
                     },
                 },
             }
         );
-
+        Matter.Body.setMass(HEAD, 0.1);
         World.add(engine.world, HEAD);
     };
 
