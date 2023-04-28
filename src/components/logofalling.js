@@ -140,7 +140,11 @@ const LogoFalling = () => {
                 },
             }
         );
-        Matter.Body.setMass(HEAD, 0.1);
+        Matter.Body.applyForce(
+            HEAD,
+            { x: HEAD.position.x, y: HEAD.position.y },
+            { x: -0.03, y: 0 }
+        );
         World.add(engine.world, HEAD);
     };
 
