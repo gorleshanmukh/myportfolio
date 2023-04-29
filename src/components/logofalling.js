@@ -43,10 +43,12 @@ const addBody = (Bodies, World, engine, Events) => {
         { x: HEAD.position.x, y: HEAD.position.y },
         { x: -0.03, y: 0 }
     );
+    if (World.bodies.length > 60) {
+        addBull(Bodies, World, engine, Events);
+    }
     World.add(engine.world, HEAD);
 }
 
-let bodyCount = 0;
 const addBull = (Bodies, World, engine, Events) => {
     const bull = Bodies.rectangle(
         // window.innerWidth,
@@ -86,6 +88,7 @@ const LogoFalling = () => {
     let engine;
     let height = window.innerHeight - 100;
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         engine = Engine.create();
         const render = Render.create({
             element: canvasRef.current,
@@ -120,12 +123,12 @@ const LogoFalling = () => {
                 if (bodyB.label === "Bull") {
                     console.log("Bull hit the surface")
                     if (bodyA.label === "Logo") {
-                        Matter.Body.setVelocity(bodyA, {x: -30, y: 0});
+                        Matter.Body.setVelocity(bodyA, {x: -30, y: 0.2});
                     }
                 } else if (bodyA.label === "Bull") {
                     console.log("Bull hit the surface")
                     if (bodyB.label === "Logo") {
-                        Matter.Body.setVelocity(bodyB, {x: -30, y: 0});
+                        Matter.Body.setVelocity(bodyB, {x: -30, y: 0.2});
                     }
                 }
             }
@@ -147,11 +150,6 @@ const LogoFalling = () => {
 
         setInterval(() => {
             addBody(Bodies, World, engine);
-            bodyCount++;
-            if (bodyCount === 50) {
-                bodyCount = 0;
-                addBull(Bodies, World, engine, Events);
-            }
         }, 1200);
         return () => {
             Engine.clear(engine);
@@ -164,10 +162,10 @@ const LogoFalling = () => {
     }, []);
 
     const handleClick = () => {
-        // a for loop that run 20 times and adds bodies to the world
+        addBody(Bodies, World, engine, Events);
+        addBody(Bodies, World, engine, Events);
         addBody(Bodies, World, engine, Events);
     };
-
     return <div ref={canvasRef} onClick={handleClick} />;
 };
 
