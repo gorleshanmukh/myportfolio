@@ -19,6 +19,8 @@ let TEXTURES = ['./img.png',
     'img_14.svg',
     './2.svg','./3.svg','./4.svg','./1.svg'];
 
+let bullAdded = false;
+
 const addBody = (Bodies, World, engine, Events) => {
     const HEAD = Bodies.rectangle(
         // window.innerWidth,
@@ -43,7 +45,8 @@ const addBody = (Bodies, World, engine, Events) => {
         { x: HEAD.position.x, y: HEAD.position.y },
         { x: -0.03, y: 0 }
     );
-    if (World.bodies.length > 60) {
+    if (!bullAdded && engine.world.bodies.length > 65) {
+        bullAdded = true;
         addBull(Bodies, World, engine, Events);
     }
     World.add(engine.world, HEAD);
@@ -149,8 +152,11 @@ const LogoFalling = () => {
         mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
         setInterval(() => {
-            addBody(Bodies, World, engine);
+            addBody(Bodies, World, engine, Events);
         }, 1200);
+        setInterval(() => {
+            bullAdded = false;
+        }, 10000);
         return () => {
             Engine.clear(engine);
             Render.stop(render);
