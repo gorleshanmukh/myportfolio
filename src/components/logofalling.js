@@ -169,7 +169,10 @@ const LogoFalling = () => {
             addBody(Bodies, World, engine, Events);
             bodyCount++;
         }
-        // addBull(Bodies, World, engine, Events);
+        if (bodyCount === 100) {
+            bodyCount=0;
+            addBull(Bodies, World, engine, Events);
+        }
     };
 
     return <div ref={canvasRef} onClick={handleClick} />;
