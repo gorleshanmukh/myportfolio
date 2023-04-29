@@ -148,7 +148,7 @@ const LogoFalling = () => {
         setInterval(() => {
             addBody(Bodies, World, engine);
             bodyCount++;
-            if (bodyCount === 100) {
+            if (bodyCount === 50) {
                 bodyCount = 0;
                 addBull(Bodies, World, engine, Events);
             }
@@ -165,14 +165,7 @@ const LogoFalling = () => {
 
     const handleClick = () => {
         // a for loop that run 20 times and adds bodies to the world
-        for (let i = 0; i < 20; i++) {
-            addBody(Bodies, World, engine, Events);
-            bodyCount++;
-        }
-        if (bodyCount === 100) {
-            bodyCount=0;
-            addBull(Bodies, World, engine, Events);
-        }
+        addBody(Bodies, World, engine, Events);
     };
 
     return <div ref={canvasRef} onClick={handleClick} />;
