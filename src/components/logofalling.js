@@ -1,10 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import Matter, { Svg } from 'matter-js';
+import Matter from 'matter-js';
 import {random} from "gsap/gsap-core";
 import '../App.css';
 
-//write a function that returns randon value from 0 to 3
-// const ORIGINAL_SIZE = 76
 let TEXTURES = ['./img.png',
     'img_1.png',
     // 'img_2.svg',
@@ -20,7 +18,65 @@ let TEXTURES = ['./img.png',
     'img_13.png',
     'img_14.svg',
     './2.svg','./3.svg','./4.svg','./1.svg'];
-const ORIGINAL_SIZE = 90
+
+const addBody = (Bodies, World, engine, Events) => {
+    const HEAD = Bodies.rectangle(
+        // window.innerWidth,
+        Math.random() * window.innerWidth + 500,
+        random(1,10) * -100,
+        30,
+        30,
+        {
+            angle: Math.random() * 360 * (Math.PI / 180),
+            render: {
+                sprite: {
+                    texture: getTexture(),
+                    xScale: 0.21,
+                    yScale: 0.21,
+                },
+            },
+            label: "Logo"
+        },
+    );
+    Matter.Body.applyForce(
+        HEAD,
+        { x: HEAD.position.x, y: HEAD.position.y },
+        { x: -0.03, y: 0 }
+    );
+    World.add(engine.world, HEAD);
+}
+
+let bodyCount = 0;
+const addBull = (Bodies, World, engine, Events) => {
+    const bull = Bodies.rectangle(
+        // window.innerWidth,
+        window.innerWidth,
+        window.innerHeight-300,
+        90,
+        90,
+        {
+            angle: 0,
+            frictionAir: 0.1,
+            render: {
+                sprite: {
+                    texture: './bull.png',
+                    xScale: 0.5,
+                    yScale: 0.5,
+                },
+            },
+            label: "Bull"
+        },
+    );
+    // Set initial velocity
+    Matter.Body.setVelocity(bull, { x: -3, y: 0 });
+
+    // Listen for beforeUpdate event to set velocity every frame
+    Events.on(engine, 'beforeUpdate', () => {
+        Matter.Body.setVelocity(bull, { x: -3, y: 0 });
+    });
+    Matter.Body.setInertia(bull, Infinity);
+    World.add(engine.world, bull);
+}
 const getTexture = () => {
     return TEXTURES[Math.floor(Math.random() * TEXTURES.length)];
 }
@@ -45,46 +101,33 @@ const LogoFalling = () => {
         console.log(ang)
         const boundaryOptions = {
             isStatic: true,
-            angle: 3.081288909939511,
-            // angle: 2.9722075770191174,
-            // angle: ang,
-            render: {
-                fillStyle: "red",
-                strokeStyle: "red"
-            }
-        };
-        const boundaryOptions1 = {
-            isStatic: true,
-            // angle: random(0, 360) * (Math.PI / 180),
             render: {
                 fillStyle: "white",
-            }
+            },
+            label: "Surface"
         };
-        const ground = Bodies.rectangle(0, window.innerHeight, 1300, 4);
-        const leftWall = Bodies.rectangle(0, 360, 4, 740, boundaryOptions);
-        // const rightWall = Bodies.rectangle(0, window.innerHeight-30, window.innerWidth*3, 3, boundaryOptions);
-        let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions1)
+        let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions)
 
-        // const box = Bodies.rectangle(400, 200, 80, 80);
-        // const circle = Bodies.circle(200, 100, 40);
         World.add(engine.world, [trap]);
         Engine.run(engine);
         Render.run(render);
-        // Add collision event listener to the engine
         Events.on(engine, 'collisionStart', (event) => {
             const pairs = event.pairs;
-
-            // Iterate through the collision pairs
             for (let i = 0; i < pairs.length; i++) {
                 const pair = pairs[i];
                 const bodyA = pair.bodyA;
                 const bodyB = pair.bodyB;
-
-                // Set restitution and friction properties of colliding bodies
-                bodyA.restitution = 0.7;
-                bodyB.restitution = 0.7;
-                bodyA.friction = 0.5;
-                bodyB.friction = 0.5;
+                if (bodyB.label === "Bull") {
+                    console.log("Bull hit the surface")
+                    if (bodyA.label === "Logo") {
+                        Matter.Body.setVelocity(bodyA, {x: -30, y: 0});
+                    }
+                } else if (bodyA.label === "Bull") {
+                    console.log("Bull hit the surface")
+                    if (bodyB.label === "Logo") {
+                        Matter.Body.setVelocity(bodyB, {x: -30, y: 0});
+                    }
+                }
             }
         });
 
@@ -103,8 +146,13 @@ const LogoFalling = () => {
         mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
         setInterval(() => {
-            handleClick();
-        }, 1500);
+            addBody(Bodies, World, engine);
+            bodyCount++;
+            if (bodyCount === 100) {
+                bodyCount = 0;
+                addBull(Bodies, World, engine, Events);
+            }
+        }, 900);
         return () => {
             Engine.clear(engine);
             Render.stop(render);
@@ -116,36 +164,7 @@ const LogoFalling = () => {
     }, []);
 
     const handleClick = () => {
-        const SIZE = random(30, 50)
-        const HEAD = Bodies.rectangle(
-            Math.random() * window.innerWidth,
-            random(1,10) * -100,
-            // SIZE,
-            // SIZE,
-            30,
-            30,
-            {
-                angle: Math.random() * 360 * (Math.PI / 180),
-                collisionFilter: {
-                    category: 0x0001, // set a category that is different from other bodies
-                },
-                render: {
-                    sprite: {
-                        texture: getTexture(),
-                        // xScale: SIZE / ORIGINAL_SIZE,
-                        // yScale: SIZE / ORIGINAL_SIZE,
-                        xScale: 0.2, // set the x scale of the texture
-                        yScale: 0.2, // set the y scale of the texture
-                    },
-                },
-            }
-        );
-        Matter.Body.applyForce(
-            HEAD,
-            { x: HEAD.position.x, y: HEAD.position.y },
-            { x: -0.03, y: 0 }
-        );
-        World.add(engine.world, HEAD);
+        addBody(Bodies, World, engine, Events);
     };
 
     return <div ref={canvasRef} onClick={handleClick} />;
