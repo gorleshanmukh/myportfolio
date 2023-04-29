@@ -53,9 +53,9 @@ const addBull = (Bodies, World, engine, Events) => {
         window.innerWidth,
         window.innerHeight-300,
         90,
-        90,
+        100,
         {
-            angle: 0,
+            angle: -0.04,
             frictionAir: 0.1,
             render: {
                 sprite: {
@@ -152,7 +152,7 @@ const LogoFalling = () => {
                 bodyCount = 0;
                 addBull(Bodies, World, engine, Events);
             }
-        }, 900);
+        }, 1200);
         return () => {
             Engine.clear(engine);
             Render.stop(render);
@@ -164,7 +164,12 @@ const LogoFalling = () => {
     }, []);
 
     const handleClick = () => {
-        addBody(Bodies, World, engine, Events);
+        // a for loop that run 20 times and adds bodies to the world
+        for (let i = 0; i < 20; i++) {
+            addBody(Bodies, World, engine, Events);
+            bodyCount++;
+        }
+        // addBull(Bodies, World, engine, Events);
     };
 
     return <div ref={canvasRef} onClick={handleClick} />;
