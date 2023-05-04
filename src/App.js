@@ -11,7 +11,7 @@ function App() {
       <div className="canvas-container">
           <Logofalling />
           <TypeAnim />
-          <Nav />
+          {/*<Nav />*/}
       </div>
         <Projects />
     </div>

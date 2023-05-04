@@ -33,7 +33,7 @@ const TypeAnim = () => {
                 I am a graduate student pursuing a Master's degree in Computer Science at the University of North Carolina at Charlotte.
                 Currently, I am working as a Java Application Developer at the North Carolina Research Center.
                 From web applications to mobile apps, I have worked on a variety of projects that
-                demonstrate my ability to build scalable, maintainable, and user-friendly applications.
+                demonstrate my ability to build scalable, maintainable, and user-friendly applications. By the way, this page is still under construction.
             </div>
             </div>
 

@@ -3,6 +3,9 @@ import Matter from 'matter-js';
 import {random} from "gsap/gsap-core";
 import '../App.css';
 
+let BODIES_ADD_DELAY = 12000;
+let BODIES_CLEANUP_COUNT = 40;
+let REMOVE_BULL_INTERVAL = 15000;
 let TEXTURES = ['./img.png',
     'img_1.png',
     // 'img_2.svg',
@@ -19,7 +22,6 @@ let TEXTURES = ['./img.png',
     'img_14.svg',
     './2.svg','./3.svg','./4.svg','./1.svg'];
 
-let bullAdded = false;
 
 const addBody = (Bodies, World, engine, Events) => {
     const HEAD = Bodies.rectangle(
@@ -43,16 +45,19 @@ const addBody = (Bodies, World, engine, Events) => {
     Matter.Body.applyForce(
         HEAD,
         { x: HEAD.position.x, y: HEAD.position.y },
-        { x: -0.03, y: 0 }
+        { x: -0.025, y: 0 }
     );
-    if (!bullAdded && engine.world.bodies.length > 65) {
-        bullAdded = true;
-        addBull(Bodies, World, engine, Events);
+    if (engine.world.bodies.filter(b => b.label === "Bull").length === 0
+        && engine.world.bodies.length > BODIES_CLEANUP_COUNT) {
+        // addBull(Bodies, World, engine, Events);
     }
     World.add(engine.world, HEAD);
 }
 
 const addBull = (Bodies, World, engine, Events) => {
+    if (engine.world.bodies.filter(b => b.label === "Bull").length > 0) {
+       return;
+    }
     const bull = Bodies.rectangle(
         // window.innerWidth,
         window.innerWidth,
@@ -73,15 +78,22 @@ const addBull = (Bodies, World, engine, Events) => {
         },
     );
     // Set initial velocity
-    Matter.Body.setVelocity(bull, { x: -3, y: 0 });
+    Matter.Body.setVelocity(bull, { x: -7, y: 0 });
 
     // Listen for beforeUpdate event to set velocity every frame
     Events.on(engine, 'beforeUpdate', () => {
-        Matter.Body.setVelocity(bull, { x: -3, y: 0 });
+        Matter.Body.setVelocity(bull, { x: -7, y: 0 });
     });
     Matter.Body.setInertia(bull, Infinity);
     World.add(engine.world, bull);
+    removeBodyAfterInterval(engine.world, bull, REMOVE_BULL_INTERVAL);
 }
+
+const removeBodyAfterInterval = (World, body, interval) => {
+    setTimeout(() => {
+        Matter.World.remove(World, body);
+    }, interval);
+};
 const getTexture = () => {
     return TEXTURES[Math.floor(Math.random() * TEXTURES.length)];
 }
@@ -123,13 +135,16 @@ const LogoFalling = () => {
                 const pair = pairs[i];
                 const bodyA = pair.bodyA;
                 const bodyB = pair.bodyB;
+                // if (bodyA.label === "Logo" && bodyB.label === "Logo"
+                //     && engine.world.bodies.filter(b => b.label === "Bull").length > 0) {
+                //     Matter.Body.setVelocity(bodyA, {x: -10, y: 0.2});
+                //     Matter.Body.setVelocity(bodyB, {x: -10, y: 0.2});
+                // }
                 if (bodyB.label === "Bull") {
-                    console.log("Bull hit the surface")
                     if (bodyA.label === "Logo") {
                         Matter.Body.setVelocity(bodyA, {x: -30, y: 0.2});
                     }
                 } else if (bodyA.label === "Bull") {
-                    console.log("Bull hit the surface")
                     if (bodyB.label === "Logo") {
                         Matter.Body.setVelocity(bodyB, {x: -30, y: 0.2});
                     }
@@ -153,10 +168,7 @@ const LogoFalling = () => {
 
         setInterval(() => {
             addBody(Bodies, World, engine, Events);
-        }, 1200);
-        setInterval(() => {
-            bullAdded = false;
-        }, 10000);
+        }, BODIES_ADD_DELAY);
         return () => {
             Engine.clear(engine);
             Render.stop(render);
@@ -169,8 +181,7 @@ const LogoFalling = () => {
 
     const handleClick = () => {
         addBody(Bodies, World, engine, Events);
-        addBody(Bodies, World, engine, Events);
-        addBody(Bodies, World, engine, Events);
+        addBull(Bodies, World, engine, Events);
     };
     return <div ref={canvasRef} onClick={handleClick} />;
 };
