@@ -65,7 +65,7 @@ const addBull = (Bodies, World, engine, Events) => {
         90,
         100,
         {
-            angle: -0.04,
+            // angle: -0.04,
             frictionAir: 0.1,
             render: {
                 sprite: {
@@ -181,7 +181,7 @@ const LogoFalling = () => {
 
     const handleClick = () => {
         addBody(Bodies, World, engine, Events);
-        addBull(Bodies, World, engine, Events);
+        // addBull(Bodies, World, engine, Events);
     };
     return <div ref={canvasRef} onClick={handleClick} />;
 };
