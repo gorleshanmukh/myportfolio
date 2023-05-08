@@ -125,8 +125,20 @@ const LogoFalling = () => {
             label: "Surface"
         };
         let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions)
-
-        World.add(engine.world, [trap]);
+        let base = Bodies.rectangle(
+            window.innerWidth / 2,
+            height,
+            window.innerWidth,
+            100,
+            {
+                isStatic: true,
+                angle: -0.04,
+                render: {
+                        fillStyle: "white",
+                },
+                label: "base"
+            })
+        World.add(engine.world, [base]);
         Engine.run(engine);
         Render.run(render);
         Events.on(engine, 'collisionStart', (event) => {
