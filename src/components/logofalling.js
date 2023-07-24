@@ -36,8 +36,8 @@ const addBody = (Bodies, World, engine, Events) => {
             render: {
                 sprite: {
                     texture: getTexture(),
-                    xScale: 0.21,
-                    yScale: 0.21,
+                    xScale: window.innerWidth <= 768 ? 0.11 : 0.21,
+                    yScale: window.innerWidth <= 768 ? 0.11 : 0.21,
                 },
             },
             label: "Logo"
