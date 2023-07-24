@@ -219,6 +219,10 @@ svg {
   .type-animation {
     overflow: hidden;
   }
+  .links > a {
+    margin: 0 10px;
+  }
+
 }
 
 

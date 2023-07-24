@@ -46,8 +46,8 @@ const TypeAnim = () => {
                 demonstrate my ability to build scalable, maintainable, and user-friendly applications. By the way, this page is still under construction.
             </div>
             <div className={"links"}>
-               <a target={"_blank"} href={"https://github.com/gorleshanmukh"}> <img width="55px" style={{filter:"invert(1)"}} className={"link-image"} src={"github.png"} alt={"linkedin"} /></a>
-                <a target={"_blank"} href={"https://www.linkedin.com/in/gorleshanmukh/"}> <img width="40px" className={"link-image"} src={"linkedin.png"} alt={"linkedin"} /></a>
+               <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://github.com/gorleshanmukh"}> <img width={window.innerWidth <= 768 ? "40px" : "60px"} style={{filter:"invert(1)"}} className={"link-image"} src={"github.png"} alt={"linkedin"} /></a>
+                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://www.linkedin.com/in/gorleshanmukh/"}> <img width={window.innerWidth <= 768 ? "30px" : "40px"} className={"link-image"} src={"linkedin.png"} alt={"linkedin"} /></a>
             </div>
             <div className={"resume-container"}>
                 <a className={"resume-link"} href={"/resume/resume.pdf"} target={"_blank"} >Resume</a>
