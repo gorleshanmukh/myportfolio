@@ -8,7 +8,7 @@ const ScrollLink = Scroll.ScrollLink;
 function MyLogo() {
     return <a href={"/"} className={"logo"}>
         <svg height="50px" viewBox="0 0 350.00000000000006 68.8146789927901"
-             className="css-1j8o68f">
+             className="my-logo">
             <defs id="SvgjsDefs5725"></defs>
             <g id="SvgjsG5726" featurekey="nameFeature-0"
                transform="matrix(1.5536301650908158,0,0,1.5536301650908158,-3.848218197591635,-17.334911978387247)"

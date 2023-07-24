@@ -22,9 +22,9 @@ let TEXTURES = ['./img.png',
     'img_14.svg',
     './2.svg','./3.svg','./4.svg','./1.svg'];
 
-
+const isMobile = window.innerWidth <= 768;
 const addBody = (Bodies, World, engine, Events) => {
-    console.log(window.innerWidth)
+
     const HEAD = Bodies.rectangle(
         // window.innerWidth,
         Math.random() * window.innerWidth + 500,
@@ -102,7 +102,7 @@ const LogoFalling = () => {
     const canvasRef = useRef(null);
     const { Engine, Render, World, Bodies, MouseConstraint, Mouse, Events } = Matter;
     let engine;
-    let height = window.innerHeight - 100;
+    let height = isMobile ? window.innerHeight-10 : window.innerHeight - 100;
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         engine = Engine.create();
@@ -134,7 +134,7 @@ const LogoFalling = () => {
             100,
             {
                 isStatic: true,
-                angle: -0.04,
+                angle: isMobile ? 0 : -0.04,
                 render: {
                         fillStyle: "white",
                 },

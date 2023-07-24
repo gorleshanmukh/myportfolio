@@ -199,3 +199,26 @@ svg {
 }
 
 
+@media only screen and (max-width: 500px) {
+  .type-animation-main-container {
+    left: 5%;
+  }
+  .type-animation-head {
+    font-size: 25px;
+  }
+  .type-animation-container {
+    font-size: 25px;
+  }
+  .type-animation-description {
+    font-size: 15px;
+    width: 300px;
+  }
+  .my-logo {
+    width: 180px;
+  }
+  .type-animation {
+    overflow: hidden;
+  }
+}
+
+
