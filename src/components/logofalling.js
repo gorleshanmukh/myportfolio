@@ -24,6 +24,7 @@ let TEXTURES = ['./img.png',
 
 
 const addBody = (Bodies, World, engine, Events) => {
+    console.log(window.innerWidth)
     const HEAD = Bodies.rectangle(
         // window.innerWidth,
         Math.random() * window.innerWidth + 500,
@@ -124,6 +125,7 @@ const LogoFalling = () => {
             },
             label: "Surface"
         };
+
         let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions)
         let base = Bodies.rectangle(
             window.innerWidth / 2,

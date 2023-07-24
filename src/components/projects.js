@@ -6,9 +6,12 @@ import '../App.css';
 const Projects = () => {
 
 
-    return (<div>
-        {/*<h1>Projects</h1>*/}
-    </div>);
+    return (<section id={"projects"}>
+            <div className={"section-container project-container"} >
+                <h1>Projects</h1>
+            </div>
+    </section>
+        );
 };
 
 export default Projects;

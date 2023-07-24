@@ -4,6 +4,7 @@ import Logofalling from "./components/logofalling";
 import Projects from "./components/projects";
 import TypeAnim from "./components/typeanim";
 import Nav from "./components/nav";
+import Skills from "./components/skills";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <div className="canvas-container">
           <Logofalling />
           <TypeAnim />
-          {/*<Nav />*/}
+          <Nav />
       </div>
-        <Projects />
+        {/*<Skills />*/}
+        {/*<Projects />*/}
     </div>
   );
 }
