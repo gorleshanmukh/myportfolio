@@ -3,8 +3,8 @@ import Matter from 'matter-js';
 import {random} from "gsap/gsap-core";
 import '../App.css';
 
-let BODIES_ADD_DELAY = 12000;
-let BODIES_CLEANUP_COUNT = 40;
+let BODIES_ADD_DELAY = 1400;
+let BODIES_CLEANUP_COUNT = 300;
 let REMOVE_BULL_INTERVAL = 15000;
 let TEXTURES = ['./img.png',
     'img_1.png',
@@ -24,7 +24,19 @@ let TEXTURES = ['./img.png',
 
 const isMobile = window.innerWidth <= 768;
 const addBody = (Bodies, World, engine, Events) => {
-
+    const currentBodyCount = engine.world.bodies.length;
+    if (currentBodyCount >= BODIES_CLEANUP_COUNT) {
+        const bodiesToRemove = engine.world.bodies.filter(body => body.label === "Logo").slice(0, 50);
+        bodiesToRemove.forEach(body => {
+            Matter.Body.setVelocity(body, {
+                x: (Math.random() - 0.5) * 10,
+                y: (Math.random() - 0.5) * 10,
+            });
+        });
+        setTimeout(() => {
+            bodiesToRemove.forEach(body => World.remove(engine.world, body));
+        }, 1000);
+    }
     const HEAD = Bodies.rectangle(
         // window.innerWidth,
         Math.random() * window.innerWidth + 500,
@@ -57,12 +69,12 @@ const addBody = (Bodies, World, engine, Events) => {
 
 const addBull = (Bodies, World, engine, Events) => {
     if (engine.world.bodies.filter(b => b.label === "Bull").length > 0) {
-       return;
+        return;
     }
     const bull = Bodies.rectangle(
         // window.innerWidth,
         window.innerWidth,
-        window.innerHeight-300,
+        window.innerHeight - 300,
         90,
         100,
         {
@@ -79,11 +91,11 @@ const addBull = (Bodies, World, engine, Events) => {
         },
     );
     // Set initial velocity
-    Matter.Body.setVelocity(bull, { x: -7, y: 0 });
+    Matter.Body.setVelocity(bull, {x: -7, y: 0});
 
     // Listen for beforeUpdate event to set velocity every frame
     Events.on(engine, 'beforeUpdate', () => {
-        Matter.Body.setVelocity(bull, { x: -7, y: 0 });
+        Matter.Body.setVelocity(bull, {x: -7, y: 0});
     });
     Matter.Body.setInertia(bull, Infinity);
     World.add(engine.world, bull);
