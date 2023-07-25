@@ -24,6 +24,7 @@ let TEXTURES = ['./img.png',
 
 const isMobile = window.innerWidth <= 768;
 const addBody = (Bodies, World, engine, Events) => {
+    console.log(window.innerWidth)
     const currentBodyCount = engine.world.bodies.length;
     if (currentBodyCount >= BODIES_CLEANUP_COUNT) {
         const bodiesToRemove = engine.world.bodies.filter(body => body.label === "Logo").slice(0, 50);
@@ -114,7 +115,8 @@ const LogoFalling = () => {
     const canvasRef = useRef(null);
     const { Engine, Render, World, Bodies, MouseConstraint, Mouse, Events } = Matter;
     let engine;
-    let height = isMobile ? window.innerHeight-10 : window.innerHeight - 100;
+    // let height = isMobile ? window.innerHeight-10 : window.innerHeight - 100;
+    let height = window.innerHeight - 68;
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         engine = Engine.create();
@@ -141,12 +143,12 @@ const LogoFalling = () => {
         let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions)
         let base = Bodies.rectangle(
             window.innerWidth / 2,
-            height,
-            window.innerWidth,
-            100,
+            window.innerHeight - 70,
+            window.innerWidth + 20,
+            140,
             {
                 isStatic: true,
-                angle: isMobile ? 0 : -0.04,
+                angle: -0.04,
                 render: {
                         fillStyle: "white",
                 },

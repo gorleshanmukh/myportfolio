@@ -1,0 +1,73 @@
+.skills-container {
+    background-color: white;
+}
+
+.tech-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: auto;
+}
+.tech-card {
+    background-color: #8080800f;
+    min-width: 150px;
+    height: 60px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    padding: 3px 15px;
+    border-radius: 3px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 2px 4px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    transition: all 0.1s ease-in-out;
+    transform: scale(1);
+    font-size: 0.8em;
+}
+
+.tech-card:hover {
+    /*animation: wiggle 2s infinite;*/
+    transform: scale(1.15);
+}
+.tech-image-container {
+    display: flex;
+    align-items: center;
+}
+.tech-card:hover::after {
+    color:goldenrod;
+    font-weight: 700;
+    position: absolute;
+    top:-25px;
+    right:0;
+    animation: wiggle 1.5s infinite;
+}
+.five-stars:hover::after {
+    content: "★★★★★";
+}
+.four-stars:hover::after {
+    content: "★★★★☆";
+}
+.three-stars:hover::after {
+    content: "★★★☆☆";
+}
+.two-stars:hover::after {
+    content: "★★☆☆☆";
+}
+.one-star:hover::after {
+    content: "★☆☆☆☆";
+}
+.king-star:hover::after {
+    content: "👑";
+    top:-30px;
+    font-size: 22px;
+}
+
+.tech-image {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+}
+.tech-text {
+    margin: auto;
+    color: black;
+}

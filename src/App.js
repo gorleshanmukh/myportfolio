@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import './App.css';
 import Logofalling from "./components/logofalling";
-import Projects from "./components/projects";
+import Projects from "./components/Pages/Projects/projects";
 import TypeAnim from "./components/typeanim";
-import Nav from "./components/nav";
-import Skills from "./components/skills";
+import Nav from "./components/Navbar/nav";
+import Skills from "./components/Pages/Skills/skills";
+import Contact from "./components/Pages/Contact/Contact";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Nav />
       </div>
         {/*<Skills />*/}
+        {/*<Contact />*/}
         {/*<Projects />*/}
     </div>
   );

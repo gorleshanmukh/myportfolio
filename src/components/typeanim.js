@@ -43,11 +43,11 @@ const TypeAnim = () => {
                 I am a graduate student pursuing a Master's degree in Computer Science at the University of North Carolina at Charlotte.
                 Currently, I am working as a Java Application Developer at the North Carolina Research Center.
                 From web applications to mobile apps, I have worked on a variety of projects that
-                demonstrate my ability to build scalable, maintainable, and user-friendly applications. By the way, this page is still under construction.
+                demonstrate my ability to build scalable, maintainable, and user-friendly applications. <br /> By the way, this page is under construction.
             </div>
             <div className={"links"}>
-               <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://github.com/gorleshanmukh"}> <img width={window.innerWidth <= 768 ? "40px" : "60px"} style={{filter:"invert(1)"}} className={"link-image"} src={"github.png"} alt={"linkedin"} /></a>
-                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://www.linkedin.com/in/gorleshanmukh/"}> <img width={window.innerWidth <= 768 ? "30px" : "40px"} className={"link-image"} src={"linkedin.png"} alt={"linkedin"} /></a>
+               <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://github.com/gorleshanmukh"}> <img width={window.innerWidth <= 768 ? "40px" : "50px"} style={{filter:"invert(1)"}} className={"link-image"} src={"github.png"} alt={"linkedin"} /></a>
+                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://www.linkedin.com/in/gorleshanmukh/"}> <img width={window.innerWidth <= 768 ? "30px" : "35px"} className={"link-image"} src={"linkedin.png"} alt={"linkedin"} /></a>
             </div>
             <div className={"resume-container"}>
                 <a className={"resume-link"} href={"/resume/resume.pdf"} target={"_blank"} >Resume</a>
@@ -57,3 +57,11 @@ const TypeAnim = () => {
     );
 };
 export default TypeAnim;
+
+// 1920×1080 – 21.74%
+// 1366×768 – 21.36%
+// 1536×864 – 9.4%
+// 1440×900 – 7%
+// 1280×720 – 5.16%
+// 1600×900 – 3.85%
+// 1280×800 – 2.63%

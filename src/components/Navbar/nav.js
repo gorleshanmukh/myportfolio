@@ -1,13 +1,13 @@
 import { TypeAnimation } from 'react-type-animation';
-import LogoFalling from "./logofalling";
-import '../common.css';
+import LogoFalling from "../logofalling";
+import '../../common.css';
 import Scroll from 'react-scroll';
 import React, { useRef } from 'react';
 const ScrollLink = Scroll.ScrollLink;
 
 function MyLogo() {
     return <a href={"/"} className={"logo"}>
-        <svg height="50px" viewBox="0 0 350.00000000000006 68.8146789927901"
+        <svg height="38px" viewBox="0 0 350.00000000000006 68.8146789927901"
              className="my-logo">
             <defs id="SvgjsDefs5725"></defs>
             <g id="SvgjsG5726" featurekey="nameFeature-0"
@@ -52,26 +52,27 @@ const Nav = () => {
                 <div className="nav-main-container">
                     <MyLogo />
                     {/*<ul className="nav-ul">*/}
-                    {/*    <li className="nav-li">*/}
-                    {/*        <a href="#projects"*/}
-                    {/*            onClick={(e) => scrollToSection(e, "#projects")}*/}
-                    {/*            // onClick={() => scrollToRef(projectsRef)}*/}
-                    {/*           className="link"><i className="fas fa-tools"></i> Projects</a>*/}
-                    {/*    </li>*/}
+                    {/*    /!*<li className="nav-li">*!/*/}
+                    {/*    /!*    <a href="#projects"*!/*/}
+                    {/*    /!*        onClick={(e) => scrollToSection(e, "#projects")}*!/*/}
+                    {/*    /!*        // onClick={() => scrollToRef(projectsRef)}*!/*/}
+                    {/*    /!*       className="link"><i className="fas fa-tools"></i> Projects</a>*!/*/}
+                    {/*    /!*</li>*!/*/}
                     {/*    <li className="nav-li">*/}
                     {/*        <a href="#skills"*/}
                     {/*           onClick={(e) => scrollToSection(e, "#skills")}*/}
                     {/*            // onClick={() => scrollToRef(skillsRef)}*/}
                     {/*           className="link"><i className="fas fa-tools"></i> Skills</a>*/}
                     {/*    </li>*/}
-                    {/*    <li className="nav-li">*/}
-                    {/*        <a href="#education"*/}
-                    {/*            // onClick={() => scrollToRef(educationRef)}*/}
-                    {/*           className="link"><i className="fas fa-user-graduate"></i> Education</a>*/}
-                    {/*    </li>*/}
+                    {/*    /!*<li className="nav-li">*!/*/}
+                    {/*    /!*    <a href="#education"*!/*/}
+                    {/*    /!*        // onClick={() => scrollToRef(educationRef)}*!/*/}
+                    {/*    /!*       className="link"><i className="fas fa-user-graduate"></i> Education</a>*!/*/}
+                    {/*    /!*</li>*!/*/}
                     {/*    <li className="nav-li">*/}
                     {/*        <a href="#contact"*/}
                     {/*            // onClick={() => scrollToRef(contactRef)}*/}
+                    {/*           onClick={(e) => scrollToSection(e, "#contact")}*/}
                     {/*           className="link"><i className="fas fa-envelope"></i> Contact</a>*/}
                     {/*    </li>*/}
                     {/*</ul>*/}
