@@ -33,7 +33,6 @@ const Nav = () => {
         if (targetSection) {
             const headerHeight = document.querySelector(".nav-main-container").offsetHeight;
             const targetOffset = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight;
-            console.log(headerHeight)
             window.scrollTo({
                 top: targetOffset,
                 behavior: "smooth"

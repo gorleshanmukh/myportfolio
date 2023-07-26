@@ -53,7 +53,6 @@ let TEXTURES = [
 
 const isMobile = window.innerWidth <= 768;
 const addBody = (Bodies, World, engine, Events) => {
-    console.log(window.innerWidth)
     const currentBodyCount = engine.world.bodies.length;
     if (currentBodyCount >= BODIES_CLEANUP_COUNT) {
         const bodiesToRemove = engine.world.bodies.filter(body => body.label === "Logo").slice(0, 50);
@@ -78,8 +77,8 @@ const addBody = (Bodies, World, engine, Events) => {
             render: {
                 sprite: {
                     texture: getTexture(),
-                    xScale: window.innerWidth <= 768 ? 0.11 : 0.21,
-                    yScale: window.innerWidth <= 768 ? 0.11 : 0.21,
+                    xScale: window.innerWidth <= 768 ? 0.17 : 0.21,
+                    yScale: window.innerWidth <= 768 ? 0.17 : 0.21,
                 },
             },
             label: "Logo"
@@ -144,7 +143,6 @@ const LogoFalling = () => {
     const canvasRef = useRef(null);
     const { Engine, Render, World, Bodies, MouseConstraint, Mouse, Events } = Matter;
     let engine;
-    // let height = isMobile ? window.innerHeight-10 : window.innerHeight - 100;
     let height = window.innerHeight - 68;
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -159,17 +157,6 @@ const LogoFalling = () => {
                 background: "#181a1b"
             },
         });
-        let ang = random(0, 360) * (Math.PI / 180)
-        console.log(ang)
-        const boundaryOptions = {
-            isStatic: true,
-            render: {
-                fillStyle: "white",
-            },
-            label: "Surface"
-        };
-
-        let trap = Bodies.trapezoid(window.innerWidth , window.innerHeight, 15000, 400, 1, boundaryOptions)
         let base = Bodies.rectangle(
             window.innerWidth / 2,
             window.innerHeight - 70,
@@ -179,7 +166,7 @@ const LogoFalling = () => {
                 isStatic: true,
                 angle: isMobile ? 0 : -0.04,
                 render: {
-                        fillStyle: "white",
+                        fillStyle: isMobile ? "#181a1b" : "white",
                 },
                 label: "base"
             })
