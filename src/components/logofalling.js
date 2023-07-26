@@ -6,21 +6,41 @@ import '../App.css';
 let BODIES_ADD_DELAY = 1400;
 let BODIES_CLEANUP_COUNT = 300;
 let REMOVE_BULL_INTERVAL = 15000;
-let TEXTURES = ['./img.png',
-    'img_1.png',
-    // 'img_2.svg',
-    'img_3.png',
-    'img_5.png',
-    'img_6.png',
-    'img_7.png',
-    'img_8.png',
-    'img_9.png',
-    'img_10.png',
-    'img_11.png',
-    'img_12.png',
-    'img_13.png',
-    'img_14.svg',
-    './2.svg','./3.svg','./4.svg','./1.svg'];
+let TEXTURES = [
+    "skills/android.svg",
+    "skills/arduino.svg",
+    "skills/bitbucket.svg",
+    "skills/docker.svg",
+    "skills/git.svg",
+    "skills/graphql.svg",
+    "skills/javascript.svg",
+    "skills/mongodb.svg",
+    "skills/npm.svg",
+    "skills/react.svg",
+    "skills/terraform.svg",
+    "skills/angularjs.svg",
+    "skills/aws.svg",
+    "skills/bootstrap.svg",
+    "skills/express.svg",
+    "skills/github.svg",
+    "skills/html5.svg",
+    "skills/jenkins.svg",
+    "skills/mysql.svg",
+    "skills/php.svg",
+    "skills/redux.svg",
+    "skills/tomcat.svg",
+    "skills/apache.svg",
+    "skills/azure.svg",
+    "skills/c.svg",
+    "skills/firebase.svg",
+    "skills/gitlab.svg",
+    "skills/java.svg",
+    "skills/jquery.svg",
+    "skills/nodejs.svg",
+    "skills/postgresql.svg",
+    "skills/spring.svg",
+    "skills/typescript.svg"
+];
 
 const isMobile = window.innerWidth <= 768;
 const addBody = (Bodies, World, engine, Events) => {
