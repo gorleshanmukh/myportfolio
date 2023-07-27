@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Matter from 'matter-js';
 import {random} from "gsap/gsap-core";
+
 import '../App.css';
 
 let BODIES_ADD_DELAY = 1400;
@@ -52,6 +53,7 @@ let TEXTURES = [
 ];
 
 const isMobile = window.innerWidth <= 768;
+
 const addBody = (Bodies, World, engine, Events) => {
     const currentBodyCount = engine.world.bodies.length;
     if (currentBodyCount >= BODIES_CLEANUP_COUNT) {
@@ -143,7 +145,7 @@ const LogoFalling = () => {
     const canvasRef = useRef(null);
     const { Engine, Render, World, Bodies, MouseConstraint, Mouse, Events } = Matter;
     let engine;
-    let height = window.innerHeight - 68;
+    let windowHeight = window.innerHeight - 68;
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         engine = Engine.create();
@@ -152,7 +154,7 @@ const LogoFalling = () => {
             engine: engine,
             options: {
                 width: window.innerWidth,
-                height: height,
+                height: windowHeight,
                 wireframes: false,
                 background: "#181a1b"
             },
@@ -221,7 +223,7 @@ const LogoFalling = () => {
             render.context = null;
             render.textures = {};
         };
-    }, []);
+    }, [windowHeight]);
 
     const handleClick = () => {
         addBody(Bodies, World, engine, Events);
