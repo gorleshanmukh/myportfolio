@@ -42,10 +42,12 @@ const TypeAnim = () => {
                     />
                 </div>
                 <div className="type-animation-description">
-                    I am a graduate student pursuing a Master's degree in Computer Science at the University of North Carolina at Charlotte.
-                    Currently, I am working as a Java Application Developer at the North Carolina Research Center.
-                    From web applications to mobile apps, I have worked on a variety of projects that
-                    demonstrate my ability to build scalable, maintainable, and user-friendly applications. <br /> By the way, this page is under construction.
+                    I am a Java developer with over four years of professional experience in crafting web applications for enterprises. I have contributed to various phases of the software development lifecycle, using advanced frameworks, web services, and design patterns within agile methodologies.
+                    I have also demonstrated leadership skills by leading a team and serving as a scrum master for a year, ensuring seamless collaboration and efficient project management.
+                    Currently, I work as a Java developer in a research center, <a className={"a-link"} target={"_blank"} href={"https://ncresearchcampus.net/"}>DU-LAB</a> and am continuously seeking new challenges and solutions.
+                    Additionally, I am pursuing a master's degree at <a href={"https://www.charlotte.edu/"} target={"_blank"} className={"a-link"}>UNC Charlotte</a> to stay updated with the
+                    latest industry developments and foster personal growth.
+                    <br /> By the way, this page is under construction.
                 </div>
                 <div className={"links"}>
                     <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} target={"_blank"} href={"https://github.com/gorleshanmukh"}> <img width={window.innerWidth <= 768 ? "40px" : "50px"} style={{filter:"invert(1)"}} className={"link-image"} src={"github.png"} alt={"linkedin"} /></a>

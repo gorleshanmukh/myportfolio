@@ -20,12 +20,10 @@
 
 
 body {
-  /*overflow: hidden;*/
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: center; /* Horizontally center content */
-  /*background: #181a1b;*/
+  justify-content: center;
 }
 
 .App {
@@ -163,6 +161,15 @@ body {
   background-color: rgba(59, 130, 246, 0.85);
 }
 
+.a-link {
+  color: white;
+  pointer-events: auto;
+}
+
+.a-link:hover {
+  cursor: pointer;
+}
+
 .section-container {
   padding-top: 10px;
   min-height: 100vh;
@@ -202,6 +209,7 @@ body {
   .type-animation-description {
     font-size: 15px;
     width: 300px;
+    line-height: 1.24em;
   }
   .my-logo {
     width: 180px;
