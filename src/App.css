@@ -1,24 +1,3 @@
-@keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  80% { transform: rotate(0deg); }
-  85% { transform: rotate(7deg); }
-  95% { transform: rotate(-7deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes wow {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
 body {
   margin: 0;
   padding: 0;
@@ -29,7 +8,7 @@ body {
 .App {
   text-align: center;
   margin-top:65px;
-  max-width: 1920px;
+  max-width: 2560px;
   width: 100%;
 }
 
@@ -89,7 +68,7 @@ body {
   font-weight: 700;
   margin-bottom: 0.5em;
   pointer-events: none;
-  max-width: 1920px;
+  max-width: 2560px;
 }
 .type-animation-container {
   font-size: 1em;
@@ -172,12 +151,25 @@ body {
 
 .section-container {
   padding-top: 10px;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 .my-logo {
   width: 180px;
   transform: rotate(357deg);
+}
+
+.side-bar {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  flex-direction: column;
+  background-color: white;
+  padding: 15px;
+  top: 50%;
+  right: 0;
+  border-top-left-radius: 30%;
+  border-bottom-left-radius: 30%;
 }
 
 @media screen and (max-width: 768px) {

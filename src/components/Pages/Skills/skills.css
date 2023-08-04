@@ -38,7 +38,7 @@
     position: absolute;
     top:-25px;
     right:0;
-    animation: wiggle 1.5s infinite;
+    animation: tada 1.5s infinite;
 }
 .five-stars:hover::after {
     content: "★★★★★";
@@ -70,4 +70,100 @@
 .tech-text {
     margin: auto;
     color: black;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    80% { transform: rotate(0deg); }
+    85% { transform: rotate(7deg); }
+    95% { transform: rotate(-7deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes wow {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 1920px) {
+
+}
+
+@media screen and (max-width: 1536px) {
+    .tech-card {
+        height: 55px;
+    }
+    .tech-card:hover::after {
+        top:-20px;
+    }
+    .king-star:hover::after {
+        content: "👑";
+        top:-30px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .tech-card {
+        height: 50px;
+        margin: 15px;
+    }
+    .link {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .tech-card {
+        height: 50px;
+        margin: 15px;
+    }
+    .tech-image {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+
 }

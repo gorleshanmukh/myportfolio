@@ -16,8 +16,8 @@ function App() {
           <TypeAnim />
           <Nav />
       </div>
-        {/*<Skills />*/}
-        {/*<Contact />*/}
+        <Skills />
+        <Contact />
         {/*<Projects />*/}
     </div>
   );

@@ -24,7 +24,7 @@ let TEXTURES = [
     "skills/angularjs.svg",
     "skills/aws.svg",
     "skills/bootstrap.svg",
-    "skills/express.svg",
+    "skills/express-white.svg",
     "skills/java.svg",
     "skills/github-white.svg",
     "skills/html5.svg",
