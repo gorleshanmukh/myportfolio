@@ -10,7 +10,7 @@
     margin: auto;
 }
 .tech-card {
-    background-color: #8080800f;
+    background-color: transparent;
     min-width: 150px;
     height: 60px;
     margin: 20px;
@@ -18,8 +18,9 @@
     align-items: center;
     padding: 3px 15px;
     border-radius: 3px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 2px 4px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    transition: all 0.1s ease-in-out;
+    border: 1px solid rgba(204, 204, 204, 0.45);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.18);
+    transition: transform 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
     transform: scale(1);
     font-size: 0.8em;
 }
@@ -27,6 +28,7 @@
 .tech-card:hover {
     /*animation: wiggle 2s infinite;*/
     transform: scale(1.15);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 .tech-image-container {
     display: flex;
@@ -70,6 +72,9 @@
 .tech-text {
     margin: auto;
     color: black;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 @keyframes wiggle {
