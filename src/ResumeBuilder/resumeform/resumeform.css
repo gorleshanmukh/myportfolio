@@ -1,0 +1,7 @@
+.resume-form-container {
+    padding:20px;
+    height: 100%;
+    width: 60%;
+    background-color: #181a1b;
+    object-fit: scale-down;
+}

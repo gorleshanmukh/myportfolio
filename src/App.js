@@ -7,19 +7,25 @@ import TypeAnim from "./components/typeanim";
 import Nav from "./components/Navbar/nav";
 import Skills from "./components/Pages/Skills/skills";
 import Contact from "./components/Pages/Contact/Contact";
+import {Route, Routes} from "react-router-dom";
+import ResumeBuilder from "./ResumeBuilder/resumebuilder";
 
 function App() {
   return (
-    <div className="App">
-      <div className="canvas-container">
-          <Logofalling />
-          <TypeAnim />
-          <Nav />
-      </div>
-        <Skills />
-        <Contact />
-        {/*<Projects />*/}
-    </div>
+    <Routes>
+        <Route path="/" element={(
+            <div className="App">
+                <div className="canvas-container">
+                    <Logofalling />
+                    <TypeAnim />
+                </div>
+                <Skills />
+                <Contact />
+                {/*<Projects />*/}
+            </div>
+        )}/>
+        <Route path="/resumebuilder" element={<ResumeBuilder />}/>
+    </Routes>
   );
 }
 

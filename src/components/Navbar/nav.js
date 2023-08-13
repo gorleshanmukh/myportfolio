@@ -45,39 +45,46 @@ const Nav = () => {
             ref.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
-    return (
-        <header>
+    if (window.location.pathname == "/resumebuilder") {
+        return (
             <nav id="nav" data-aos="fade-in" className="aos-init aos-animate">
                 <div className="nav-main-container">
                     <MyLogo />
                     <ul className="nav-ul">
-                        {/*<li className="nav-li">*/}
-                        {/*    <a href="#projects"*/}
-                        {/*        onClick={(e) => scrollToSection(e, "#projects")}*/}
-                        {/*        // onClick={() => scrollToRef(projectsRef)}*/}
-                        {/*       className="link"><i className="fas fa-tools"></i> Projects</a>*/}
-                        {/*</li>*/}
                         <li className="nav-li">
-                            <a href="#skills"
-                               onClick={(e) => scrollToSection(e, "#skills")}
-                                // onClick={() => scrollToRef(skillsRef)}
-                               className="link"><i className="fas fa-tools"></i> Tech</a>
-                        </li>
-                        {/*<li className="nav-li">*/}
-                        {/*    <a href="#education"*/}
-                        {/*        // onClick={() => scrollToRef(educationRef)}*/}
-                        {/*       className="link"><i className="fas fa-user-graduate"></i> Education</a>*/}
-                        {/*</li>*/}
-                        <li className="nav-li">
-                            <a href="#contact"
-                                // onClick={() => scrollToRef(contactRef)}
-                               onClick={(e) => scrollToSection(e, "#contact")}
-                               className="link"><i className="fas fa-envelope"></i> Contact</a>
+                            <a href="/"
+                               className="link"><i className="fas fa-tools"></i> Go Back</a>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </header>
-    );
+        );
+    } else {
+        return (
+            <nav id="nav" data-aos="fade-in" className="aos-init aos-animate">
+                <div className="nav-main-container">
+                    <MyLogo />
+                    <ul className="nav-ul">
+                        <li className="nav-li">
+                            <a href="/"
+                               onClick={(e) => scrollToSection(e, "#skills")}
+                               className="link"><i className="fas fa-tools"></i> Tech</a>
+                        </li>
+                        <li className="nav-li">
+                            <a href="/"
+                                // onClick={() => scrollToRef(contactRef)}
+                               onClick={(e) => scrollToSection(e, "#contact")}
+                               className="link"><i className="fas fa-envelope"></i> Contact</a>
+                        </li>
+                        <li className="nav-li">
+                            <a href="/resumebuilder"
+                                // onClick={() => scrollToRef(contactRef)}
+                               className="link"><i className="fas fa-envelope"></i> Resume Builder</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        );
+    }
 };
 export default Nav;
