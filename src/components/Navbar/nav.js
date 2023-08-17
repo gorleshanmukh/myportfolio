@@ -57,23 +57,23 @@ const Nav = () => {
                         {/*        // onClick={() => scrollToRef(projectsRef)}*/}
                         {/*       className="link"><i className="fas fa-tools"></i> Projects</a>*/}
                         {/*</li>*/}
-                        <li className="nav-li">
-                            <a href="#skills"
-                               onClick={(e) => scrollToSection(e, "#skills")}
-                                // onClick={() => scrollToRef(skillsRef)}
-                               className="link"><i className="fas fa-tools"></i> Tech</a>
-                        </li>
+                        {/*<li className="nav-li">*/}
+                        {/*    <a href="#skills"*/}
+                        {/*       onClick={(e) => scrollToSection(e, "#skills")}*/}
+                        {/*        // onClick={() => scrollToRef(skillsRef)}*/}
+                        {/*       className="link"><i className="fas fa-tools"></i> Tech</a>*/}
+                        {/*</li>*/}
                         {/*<li className="nav-li">*/}
                         {/*    <a href="#education"*/}
                         {/*        // onClick={() => scrollToRef(educationRef)}*/}
                         {/*       className="link"><i className="fas fa-user-graduate"></i> Education</a>*/}
                         {/*</li>*/}
-                        <li className="nav-li">
-                            <a href="#contact"
-                                // onClick={() => scrollToRef(contactRef)}
-                               onClick={(e) => scrollToSection(e, "#contact")}
-                               className="link"><i className="fas fa-envelope"></i> Contact</a>
-                        </li>
+                        {/*<li className="nav-li">*/}
+                        {/*    <a href="#contact"*/}
+                        {/*        // onClick={() => scrollToRef(contactRef)}*/}
+                        {/*       onClick={(e) => scrollToSection(e, "#contact")}*/}
+                        {/*       className="link"><i className="fas fa-envelope"></i> Contact</a>*/}
+                        {/*</li>*/}
                     </ul>
                 </div>
             </nav>
