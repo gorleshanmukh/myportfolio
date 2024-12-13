@@ -42,11 +42,9 @@ const TypeAnim = () => {
                     />
                 </div>
                 <div className="type-animation-description">
-                    I am a Java developer with over four years of professional experience in crafting web applications for enterprises. I have contributed to various phases of the software development lifecycle, using advanced frameworks, web services, and design patterns within agile methodologies.
+                    I am a Java developer with approximately five years of professional experience in crafting web applications for enterprises. I have contributed to various phases of the software development lifecycle, using advanced frameworks, web services, and design patterns within agile methodologies.
                     I have also demonstrated leadership skills by leading a team and serving as a scrum master for a year, ensuring seamless collaboration and efficient project management.
-                    Currently, I work as a Java developer in a research center, <a className={"a-link"} target={"_blank"} href={"https://ncresearchcampus.net/"}>DU-LAB</a> and am continuously seeking new challenges and solutions.
-                    Additionally, I am pursuing a master's degree at <a href={"https://www.charlotte.edu/"} target={"_blank"} className={"a-link"}>UNC Charlotte</a> to stay updated with the
-                    latest industry developments and foster personal growth.
+                    Currently, I work as a Senior Software Engineer at Cognizant. 
                     <br /> By the way, this page is under construction.
                 </div>
                 <div className={"links"}>
